@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: auth
+  jmx:
+    default-domain: ${spring.application.name}
+  # Using Spring Cloud Config Server
+  cloud:
+    config:
+      enabled: false
+      fail-fast: true
+      uri: http://localhost:8888
+      retry:
+        max-attempts: 4 # Multiplier for next interval.
+        max-interval: 2000 # Maximum interval for backoff.
+
+management:
+  endpoint:
+    refresh:
+      enabled: true
+    health:
+      group:
+        readiness:
+          include: '*'
+          show-details: when_authorized
+        liveness:
+          include: ping
+          show-details: never
+      show-details: when_authorized
+      roles:
+        - ROLE_ACTUATOR
+        - ROLE_ADMIN
+        - ROLE_MANAGER
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health, info, metrics, refresh

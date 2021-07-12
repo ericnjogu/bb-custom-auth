@@ -1,0 +1,47 @@
+# Disable service registration
+eureka:
+  client:
+    enabled: false
+
+auth:
+  token:
+    converter:
+      validationEnabled: true
+      allowedApiKeys: A3HC6A0347HH,7HHGI3ZYLL6R
+
+token:
+  converter:
+    allowedApiHeader: X-TokenConverter-ApiKey
+
+# Configure Internal JWT
+sso:
+  jwt:
+    internal:
+      signature:
+        key:
+          type: ENV
+          value: SIG_SECRET_KEY
+# Configure External JWT
+    external:
+      signature:
+        key:
+          type: ENV
+          value: EXTERNAL_SIG_SECRET_KEY
+      encryption:
+        key:
+          type: ENV
+          value: EXTERNAL_ENC_SECRET_KEY
+#spring:
+#  activemq:
+#    broker-url: vm://activemq?broker.persistent=false&broker.advisorySupport=false&broker.useShutdownHook=false
+
+# Disable JMS integration for tests
+backbase:
+  activemq:
+    enabled: false
+  communication:
+    inbound: http
+    outbound: http
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration

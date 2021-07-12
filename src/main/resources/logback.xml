@@ -1,0 +1,8 @@
+<configuration>
+    <contextName>auth</contextName>
+
+    <property name="logging.level" value="WARN" />
+    <property name="logging.level.com.backbase.service.auth" value="WARN" />
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+</configuration>

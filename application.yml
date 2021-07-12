@@ -1,0 +1,51 @@
+#
+# Properties for local development only
+#
+
+# Configure embedded app server
+server:
+  port: 7778
+
+# Netflix Eureka Client configuration
+eureka:
+  instance:
+    nonSecurePort: ${server.port}
+#    ipAddress: <my network IP address>
+    leaseRenewalIntervalInSeconds: 10 # For development only
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/registry/eureka/
+
+spring:
+#  activemq:
+#    broker-url: tcp://localhost:61616
+# Disable Spring JMS
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration
+
+# Disable JMS integration
+backbase:
+  activemq:
+    enabled: false
+  communication:
+    inbound: http
+    outbound: http
+
+#
+# Enable debug logging level configuration
+#
+#logging:
+#  level:
+#    root: DEBUG
+#    com.backbase.service.auth: DEBUG
+
+#
+# External JWT lifetime configuration
+#
+sso:
+  jwt:
+    external:
+      type: signed
+      expiration: 3000
+      renew: 1000
+      not_valid_after: 5000

@@ -1,0 +1,51 @@
+# Netflix Eureka Client configuration
+eureka:
+  instance:
+    appname: ${spring.application.name}
+    nonSecurePort: 8080
+    preferIpAddress: true
+    metadataMap:
+      public: true
+  client:
+    serviceUrl:
+      defaultZone: http://registry-editorial:8761/registry/eureka/
+
+auth:
+  token:
+    converter:
+      validationEnabled: true
+      allowedApiKeys: A3HC6A0347HH,7HHGI3ZYLL6R
+
+token:
+  converter:
+    allowedApiHeader: X-TokenConverter-ApiKey
+
+# Configure Internal JWT
+sso:
+  jwt:
+    internal:
+      type: signed
+      signature:
+        key:
+          type: ENV
+          value: SIG_SECRET_KEY
+# Configure External JWT
+    external:
+      type: signedEncrypted
+      signature:
+        key:
+          type: ENV
+          value: EXTERNAL_SIG_SECRET_KEY
+      encryption:
+        key:
+          type: ENV
+          value: EXTERNAL_ENC_SECRET_KEY
+
+# Define app defaults
+management:
+  health:
+    jms:
+      enabled: false
+  endpoints:
+    jmx:
+      domain: ${spring.application.name}
