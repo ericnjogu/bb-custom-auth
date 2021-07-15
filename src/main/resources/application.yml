@@ -8,7 +8,7 @@ eureka:
       public: true
   client:
     serviceUrl:
-      defaultZone: http://registry-editorial:8761/registry/eureka/
+      defaultZone: http://localhost:8080/registry/eureka/
 
 auth:
   token:
