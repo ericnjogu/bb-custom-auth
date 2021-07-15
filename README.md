@@ -15,3 +15,9 @@ mvn archetype:generate \
 -Dpackage=com.enjogu.service.bb.learning.auth \
 --batch-mode
 ```
+
+Running
+```shell
+mvn spring-boot:run \
+-Dspring-boot.run.jvmArguments="-DSIG_SECRET_KEY=JWTSecretKeyDontUseInProduction\! -DEXTERNAL_SIG_SECRET_KEY=JWTSecretKeyDontUseInProduction\! -DEXTERNAL_ENC_SECRET_KEY=JWTEncKeyDontUseInProduction666\!"
+```
