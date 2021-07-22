@@ -3,7 +3,7 @@ eureka:
   instance:
     appname: ${spring.application.name}
     nonSecurePort: 8080
-    preferIpAddress: true
+    preferIpAddress: false
     metadataMap:
       public: true
   client:
