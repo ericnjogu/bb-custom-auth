@@ -14,7 +14,7 @@ eureka:
     leaseRenewalIntervalInSeconds: 10 # For development only
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/registry/eureka/
+      defaultZone: http://localhost:8080/registry/eureka/
 
 spring:
 #  activemq:
