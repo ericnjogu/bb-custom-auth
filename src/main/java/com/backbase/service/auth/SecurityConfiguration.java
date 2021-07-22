@@ -17,6 +17,8 @@ public class SecurityConfiguration extends AuthSecurityConfiguration {
             .and()
             .withUser("admin").password("{noop}admin").roles("ADMIN", "ACTUATOR", "group_admin(ADMIN)")
             .and()
-            .withUser("manager").password("{noop}manager").roles("USER", "group_manager(MANAGER)");
+            .withUser("manager").password("{noop}manager").roles("USER", "group_manager(MANAGER)").
+            and().
+            withUser("john").password("{noop}john").roles("USER", "group_user(USER)");
     }
 }
