@@ -17,8 +17,8 @@ eureka:
       defaultZone: http://localhost:8080/registry/eureka/
 
 spring:
-#  activemq:
-#    broker-url: tcp://localhost:61616
+  activemq:
+    broker-url: tcp://localhost:61616
 # Disable Spring JMS
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration
@@ -26,7 +26,7 @@ spring:
 # Disable JMS integration
 backbase:
   activemq:
-    enabled: false
+    enabled: true
   communication:
     inbound: http
     outbound: http
