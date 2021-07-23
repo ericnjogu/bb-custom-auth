@@ -45,7 +45,7 @@ backbase:
 sso:
   jwt:
     external:
-      type: signed
+      type: signedEncrypted
       expiration: 3000
       renew: 1000
       not_valid_after: 5000
